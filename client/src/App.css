@@ -1,0 +1,27 @@
+body {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.App {
+    display: flex;
+    min-height: 100vh;
+    justify-content: space-evenly;
+    background-color: #e7ebf0;
+    width: 100%;
+}
+
+.App-sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 10px 50px;
+    background-color: white;
+    justify-self: flex-start;
+    border-right: 1px solid #b9c6d0;
+}
+
+.App-content {
+    height: 100%;
+}

@@ -1,10 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import Tasks from './components/Tasks';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <div className="App-sidebar">
+        <h1>MyTasks</h1>
+        <p>Tasks</p>
+      </div>
+      <div className="App-content">
+        <Tasks />
+      </div>
     </div>
   );
 }

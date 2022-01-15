@@ -1,0 +1,16 @@
+.Navbar {
+    background-color: white;
+    display: flex;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    justify-content: center;
+    padding: 20px 0px;
+}
+
+.Navbar-search {
+    background-color: #e7ebf0;
+    border: none;
+    width: 500px;
+    height: 30px;
+}
