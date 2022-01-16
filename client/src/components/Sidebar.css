@@ -1,0 +1,65 @@
+.Sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 20px 0px;
+    background-color: white;
+    border-right: 1px solid #b9c6d0;
+    width: 20%;
+}
+
+.Sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Sidebar-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.Sidebar-brand img {
+    width: 30px;
+    height: auto;
+}
+
+.Sidebar-dropdown {
+    display: none;
+}
+
+.Sidebar-items {
+    width: 80%;
+    margin-bottom: 40px;
+}
+
+.Sidebar-icons {
+    margin-right: 15px;
+    color: #b9c6d0;
+    font-size: 23px;
+}
+
+.icon-active {
+    color: #2446ed;
+}
+
+.items-active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #e7ebf0;
+    padding: 0 30px;
+}
+
+.dropdown-active {
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+}
+
+.Sidebar-task {
+    cursor: pointer;
+}

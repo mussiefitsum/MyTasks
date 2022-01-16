@@ -9,7 +9,10 @@ function Navbar() {
     return (
         <div className="Navbar">
             <div className="Navbar-item">
-                <input type="text" className="Navbar-search" onChange={handleChange} value={taskSearch} placeholder="Search for tasks" />
+                <div className="Navbar-input">
+                    <i className="fas fa-search"></i>
+                    <input type="text" className="Navbar-search" onChange={handleChange} value={taskSearch} placeholder="Search for tasks" />
+                </div>
             </div>
         </div>
     )

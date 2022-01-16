@@ -1,13 +1,11 @@
-import './App.css';
 import Tasks from './components/Tasks';
+import Sidebar from './components/Sidebar';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <div className="App-sidebar">
-        <h1>MyTasks</h1>
-        <p>Tasks</p>
-      </div>
+      <Sidebar />
       <div className="App-content">
         <Tasks />
       </div>
