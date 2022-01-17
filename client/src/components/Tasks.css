@@ -1,3 +1,17 @@
 .Tasks-container {
+    display: flex;
+    flex-direction: column;
     padding: 20px;
+    width: 85%;
+}
+
+.Tasks-button {
+    background-color: #2446ed;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: .2rem;
+    padding: 11px 18px;
+    align-self: flex-end;
+    cursor: pointer;
 }

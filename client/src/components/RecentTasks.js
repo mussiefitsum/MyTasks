@@ -1,6 +1,10 @@
 
 function RecentTasks() {
-    return <h2>Recent Tasks</h2>
+    return (
+        <div className="RecentTasks">
+            <h2>Recent Tasks</h2>
+        </div>
+    )
 }
 
 export default RecentTasks;
