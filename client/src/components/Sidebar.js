@@ -22,7 +22,7 @@ function Sidebar() {
                     </div>
                 </div>
                 <div className="Sidebar-items">
-                    <h3><i class="far fa-folder Sidebar-icons"></i>Categories</h3>
+                    <h3><i className="far fa-folder Sidebar-icons"></i>Categories</h3>
                 </div>
             </div>
         </div>

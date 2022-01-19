@@ -1,3 +1,11 @@
+textarea:focus::placeholder {
+    color: transparent;
+}
+
+textarea, input {
+    font-family: 'Sora', sans-serif;
+}
+
 .Form {
     position: fixed;
     z-index: 1;
@@ -11,5 +19,63 @@
 }
 
 .Form-content {
-    background-color: #969CBA
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    padding: 30px 20px;
+    background-color: white;
+    box-shadow: 0 0px 8px 0 rgb(0 0 0 / 25%);
+    border-radius: .375rem;
+}
+
+.Form-content h3 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.Form-cancel {
+    font-size: 20px;
+    align-self: flex-start;
+    cursor: pointer;
+}
+
+.Form-taskform {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+}
+
+.Form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.Form-input {
+    height: 30px;
+    width: 97%;
+    font-size: 15px;
+}
+
+.Form-description {
+    width: 97%;
+    height: 140px;
+    font-size: 15px;
+}
+
+.Form-button {
+    border-radius: .2rem;
+    color: white;
+    background-color: #2446ed;
+    padding: 10px 0px;
+    border: none;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.Form-button:hover {
+    background-color: #3c5bef;
 }

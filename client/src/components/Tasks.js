@@ -7,8 +7,13 @@ import './Tasks.css';
 
 function Tasks() {
     const [taskForm, setForm] = useState(false);
+    const [taskArr, setTaskArr] = useState([]);
     const toggleForm = () => {
         setForm(!taskForm);
+    }
+    const addTask = (task) => {
+        setTaskArr([...taskArr, task]);
+        toggleForm();
     }
     return (
         <div className="Tasks">
@@ -19,7 +24,7 @@ function Tasks() {
                     <Route path="/" element={<RecentTasks />} />
                 </Routes>
             </div>
-            {taskForm ? <Form toggleForm={toggleForm} /> : null}
+            {taskForm ? <Form toggleForm={toggleForm} addTask={addTask} /> : null}
         </div>
     )
 }
