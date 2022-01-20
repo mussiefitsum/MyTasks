@@ -14,7 +14,7 @@ function Sidebar() {
             </div>
             <div className="Sidebar-menu">
                 <div className={`Sidebar-items${ isToggle ? ' items-active' : '' }`}>
-                    <h3 className="Sidebar-task" onClick={dropdown}><i className={`far fa-check-circle Sidebar-icons${ isToggle ? ' icon-active' : '' }`}></i>Tasks</h3>
+                    <h4 className="Sidebar-task" onClick={dropdown}><i className={`far fa-check-circle Sidebar-icons${ isToggle ? ' icon-active' : '' }`}></i>Tasks</h4>
                     <div className={`Sidebar-dropdown${ isToggle ? ' dropdown-active' : '' }`}>
                         <p>To Do</p>
                         <p>In Progress</p>
@@ -22,7 +22,7 @@ function Sidebar() {
                     </div>
                 </div>
                 <div className="Sidebar-items">
-                    <h3><i className="far fa-folder Sidebar-icons"></i>Categories</h3>
+                    <h4><i className="far fa-folder Sidebar-icons"></i>Categories</h4>
                 </div>
             </div>
         </div>

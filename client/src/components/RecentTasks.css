@@ -1,0 +1,9 @@
+.RecentTasks h2 {
+    font-size: 25px;
+}
+
+.RecentTasks-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
+}

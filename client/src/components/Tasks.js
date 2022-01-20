@@ -21,7 +21,7 @@ function Tasks() {
             <div className="Tasks-container">
                 <button className="Tasks-button" onClick={toggleForm}>+ New Task</button>
                 <Routes>
-                    <Route path="/" element={<RecentTasks />} />
+                    <Route path="/" element={<RecentTasks tasks={taskArr} />} />
                 </Routes>
             </div>
             {taskForm ? <Form toggleForm={toggleForm} addTask={addTask} /> : null}

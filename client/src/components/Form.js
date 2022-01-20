@@ -13,7 +13,7 @@ function Form({ toggleForm, addTask }) {
     };
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        const newTask = { ...task };
+        const newTask = { ...task, status: 'In Progress' };
         addTask(newTask);
         setTask({ name: '', description: '', category: '' });
     }
