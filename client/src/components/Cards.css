@@ -1,7 +1,39 @@
 .Cards {
-    padding: 20px;
+    padding: 30px;
     box-shadow: 0 0px 8px 0 rgb(0 0 0 / 25%);
     background-color: white;
-    width: 20%;
-    margin-right: 30px;
+    border-radius: .4rem;
+    width: 190px;
+    margin-bottom: 20px;
+}
+
+.Cards-top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.fa-ellipsis-v {
+    font-size: 19px;
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.Cards-status {
+    font-size: 13.3px;
+    font-weight: 600;
+}
+
+.Cards-task {
+    font-size: 27px;
+    margin-bottom: -10px;
+    font-weight: 700
+}
+
+.Cards-category {
+    font-weight: 600;
+}
+
+.Cards-description {
+    font-size: 16px;
 }

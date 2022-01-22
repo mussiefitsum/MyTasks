@@ -12,7 +12,7 @@ function Tasks() {
         setForm(!taskForm);
     }
     const addTask = (task) => {
-        setTaskArr([...taskArr, task]);
+        setTaskArr([task, ...taskArr]);
         toggleForm();
     }
     return (
