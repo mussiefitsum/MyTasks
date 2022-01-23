@@ -14,6 +14,9 @@ function Navbar() {
                     <input type="text" className="Navbar-search" onChange={handleChange} value={taskSearch} placeholder="Search for tasks" />
                 </div>
             </div>
+            <div className="Navbar-item">
+                <a className="Navbar-logout" href="http://localhost:3001/logout">Logout</a>
+            </div>
         </div>
     )
 }
