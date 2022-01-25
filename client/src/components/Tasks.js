@@ -2,7 +2,7 @@ import Navbar from './Navbar';
 import RecentTasks from './RecentTasks';
 import Form from './Form';
 import { Routes, Route } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Tasks.css';
 
 function Tasks() {
@@ -11,8 +11,61 @@ function Tasks() {
     const toggleForm = () => {
         setForm(!taskForm);
     }
+
+    useEffect(() => {
+        const fetchTasks = async () => {
+            try {
+                const res = await fetch('http://localhost:3001/api/task', { credentials: 'include' });
+                if (!res.ok) {
+                    throw new Error('Something went wrong when fetching your tasks')
+                } else {
+                    const tasks = await res.json();
+                    console.log(tasks)
+                    setTaskArr(tasks);
+                }
+            } catch (err) {
+                console.log('Oops')
+                console.log(err)
+            }
+        }
+        fetchTasks();
+    }, []);
+
     const addTask = (task) => {
-        setTaskArr([task, ...taskArr]);
+        const postTask = async () => {
+            try {
+                const res = await fetch('http://localhost:3001/api/task', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(task)
+                });
+                const data = await res.json();
+                console.log(data);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        const fetchTasks = async () => {
+            try {
+                const res = await fetch('http://localhost:3001/api/task', { credentials: 'include' });
+                if (!res.ok) {
+                    throw new Error('Something went wrong when fetching your tasks')
+                } else {
+                    const tasks = await res.json();
+                    console.log(tasks)
+                    setTaskArr(tasks);
+                }
+            } catch (err) {
+                console.log('Oops')
+                console.log(err)
+            }
+        }
+        postTask();
+        fetchTasks();
         toggleForm();
     }
     return (

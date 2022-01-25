@@ -7,7 +7,7 @@ function RecentTasks({ tasks }) {
             <h2>Recent Tasks</h2>
             <div className="RecentTasks-container">
                 {tasks.map(task => (
-                    <Cards task={task} />
+                    <Cards key={task._id} task={task} />
                 ))}
             </div>
         </div>
