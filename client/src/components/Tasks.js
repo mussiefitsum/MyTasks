@@ -12,22 +12,23 @@ function Tasks() {
         setForm(!taskForm);
     }
 
-    useEffect(() => {
-        const fetchTasks = async () => {
-            try {
-                const res = await fetch('http://localhost:3001/api/task', { credentials: 'include' });
-                if (!res.ok) {
-                    throw new Error('Something went wrong when fetching your tasks')
-                } else {
-                    const tasks = await res.json();
-                    console.log(tasks)
-                    setTaskArr(tasks);
-                }
-            } catch (err) {
-                console.log('Oops')
-                console.log(err)
+    const fetchTasks = async () => {
+        try {
+            const res = await fetch('http://localhost:3001/api/task', { credentials: 'include' });
+            if (!res.ok) {
+                throw new Error('Something went wrong when fetching your tasks')
+            } else {
+                const tasks = await res.json();
+                console.log(tasks)
+                setTaskArr(tasks);
             }
+        } catch (err) {
+            console.log('Oops')
+            console.log(err)
         }
+    }
+
+    useEffect(() => {
         fetchTasks();
     }, []);
 
@@ -49,21 +50,6 @@ function Tasks() {
                 console.log(e);
             }
         }
-        const fetchTasks = async () => {
-            try {
-                const res = await fetch('http://localhost:3001/api/task', { credentials: 'include' });
-                if (!res.ok) {
-                    throw new Error('Something went wrong when fetching your tasks')
-                } else {
-                    const tasks = await res.json();
-                    console.log(tasks)
-                    setTaskArr(tasks);
-                }
-            } catch (err) {
-                console.log('Oops')
-                console.log(err)
-            }
-        }
         postTask();
         fetchTasks();
         toggleForm();
@@ -74,7 +60,7 @@ function Tasks() {
             <div className="Tasks-container">
                 <button className="Tasks-button" onClick={toggleForm}>+ New Task</button>
                 <Routes>
-                    <Route path="/" element={<RecentTasks tasks={taskArr} />} />
+                    <Route path="/" element={<RecentTasks tasks={taskArr} fetchTasks={fetchTasks} />} />
                 </Routes>
             </div>
             {taskForm ? <Form toggleForm={toggleForm} addTask={addTask} /> : null}

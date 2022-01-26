@@ -101,15 +101,20 @@ app.post('/register', async (req, res, next) => {
 })
 
 app.get('/api/task', isLoggedIn, async (req, res) => {
-    console.log(req.user._id);
     const tasks = await Task.find({ user: req.user._id });
-    console.log(tasks);
-    res.json(tasks);
+    const sortedTasks = tasks.sort((a, b) => b.date - a.date);
+    res.json(sortedTasks);
 });
 
+app.put('/api/status', isLoggedIn, async (req, res) => {
+    const { id, status } = req.body;
+    const newTask = await Task.findByIdAndUpdate(id, { status: status });
+    await newTask.save();
+})
+
 app.post('/api/task', isLoggedIn, async (req, res) => {
-    const { name, description, category, status } = req.body;
-    const task = new Task({ name, description, category, status });
+    const { name, description, category, status, date } = req.body;
+    const task = new Task({ name, description, category, status, date });
     task.user = req.user._id;
     await task.save();
 });
