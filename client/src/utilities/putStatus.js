@@ -1,5 +1,5 @@
 async function putStatus(taskId, newStatus) {
-    const res = await fetch('http://localhost:3001/api/status', {
+    await fetch('http://localhost:3001/api/status', {
         method: 'PUT',
         credentials: 'include',
         headers: {
@@ -8,7 +8,6 @@ async function putStatus(taskId, newStatus) {
         },
         body: JSON.stringify({ id: taskId, status: newStatus })
     })
-    const data = await res.json();
 }
 
 export default putStatus

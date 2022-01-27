@@ -60,11 +60,12 @@ app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static(path.resolve(__dirname, './client/build')));
+
 
 const isLoggedIn = (req, res, next) => {
-    if (!req.isAuthenticated()) {
-        return res.redirect('/login');
+    if (!req.user) {
+        res.redirect('/login');
+        return
     }
     next();
 }
@@ -73,13 +74,15 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
+app.use(express.static(path.resolve(__dirname, './client/build')));
+
 app.get('/login', (req, res) => {
     res.render('login');
 });
 
 app.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), (req, res) => {
     res.redirect('http://localhost:3000/app')
-})
+});
 
 app.get('/register', (req, res) => {
     res.render('register');
@@ -119,12 +122,17 @@ app.post('/api/task', isLoggedIn, async (req, res) => {
     await task.save();
 });
 
+app.delete('/api/task', isLoggedIn, async (req, res) => {
+    const { id } = req.body;
+    await Task.findByIdAndDelete(id);
+});
+
 app.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/')
-})
+});
 
-app.get('*', (req, res) => {
+app.get('*', isLoggedIn, (req, res) => {
     res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
 });
 

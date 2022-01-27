@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import putStatus from '../utilities/putStatus';
+import deleteTask from '../utilities/deleteTask';
 import './Cards.css';
 
-function Cards({ task, fetchTasks }) {
+function Cards({ task, fetchTasks, startLoading, stopLoading }) {
     const [isCardMenu, setCardMenu] = useState(false);
     const node = useRef();
     const handleClick = e => {
@@ -16,7 +17,7 @@ function Cards({ task, fetchTasks }) {
         return () => {
             document.removeEventListener('mousedown', handleClick);
         }
-    }, [])
+    }, []);
     const taskStatus = (status) => {
         if (status === 'To Do') {
             return <span className="Cards-status" style={{ color: '#6c757d' }}><i className="fas fa-clipboard-list"></i>  {status.toUpperCase()}</span>
@@ -25,22 +26,35 @@ function Cards({ task, fetchTasks }) {
         } else {
             return <span className="Cards-status" style={{ color: '#28a745' }}><i className="fas fa-check-circle"></i>  {status.toUpperCase()}</span>
         }
-    }
+    };
     const inProgressStatus = () => {
+        startLoading();
+        setCardMenu(!isCardMenu);
         putStatus(task._id, 'In Progress');
-        setCardMenu(!isCardMenu);
         fetchTasks();
-    }
+        stopLoading();
+    };
     const toDoStatus = () => {
+        startLoading();
+        setCardMenu(!isCardMenu);
         putStatus(task._id, 'To Do');
-        setCardMenu(!isCardMenu);
         fetchTasks();
-    }
+        stopLoading();
+    };
     const doneStatus = () => {
-        putStatus(task._id, 'Done');
+        startLoading();
         setCardMenu(!isCardMenu);
+        putStatus(task._id, 'Done');
         fetchTasks();
-    }
+        stopLoading();
+    };
+    const removeTask = () => {
+        startLoading();
+        setCardMenu(!isCardMenu);
+        deleteTask(task._id);
+        fetchTasks();
+        stopLoading();
+    };
     const statusDropdown = (status) => {
         if (status === 'To Do') {
             return (
@@ -48,6 +62,7 @@ function Cards({ task, fetchTasks }) {
                     <strong>Change Status</strong>
                     <div className="Cards-dropdown-item" onClick={inProgressStatus}>In Progress</div>
                     <div className="Cards-dropdown-item" onClick={doneStatus}>Done</div>
+                    <div className="Cards-dropdown-item" id="dropdown-delete" onClick={removeTask}>Remove</div>
                 </div>
             )
         } else if (status === 'In Progress') {
@@ -56,6 +71,7 @@ function Cards({ task, fetchTasks }) {
                     <strong>Change Status</strong>
                     <div className="Cards-dropdown-item" onClick={toDoStatus}>To Do</div>
                     <div className="Cards-dropdown-item" onClick={doneStatus}>Done</div>
+                    <div className="Cards-dropdown-item" id="dropdown-delete" onClick={removeTask}>Remove</div>
                 </div>
             )
         } else {
@@ -64,6 +80,7 @@ function Cards({ task, fetchTasks }) {
                     <strong>Change Status</strong>
                     <div className="Cards-dropdown-item" onClick={toDoStatus}>To Do</div>
                     <div className="Cards-dropdown-item" onClick={inProgressStatus}>In Progress</div>
+                    <div className="Cards-dropdown-item" id="dropdown-delete" onClick={removeTask}>Remove</div>
                 </div>
             )
         }
