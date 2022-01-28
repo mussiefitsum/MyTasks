@@ -3,7 +3,7 @@ import putStatus from '../utilities/putStatus';
 import deleteTask from '../utilities/deleteTask';
 import './Cards.css';
 
-function Cards({ task, fetchTasks, startLoading, stopLoading }) {
+function Cards({ task, fetchTasks }) {
     const [isCardMenu, setCardMenu] = useState(false);
     const node = useRef();
     const handleClick = e => {
@@ -12,6 +12,9 @@ function Cards({ task, fetchTasks, startLoading, stopLoading }) {
         }
         setCardMenu(false);
     };
+    const toggleCardMenu = () => {
+        setCardMenu(!isCardMenu);
+    }
     useEffect(() => {
         document.addEventListener('mousedown', handleClick);
         return () => {
@@ -28,32 +31,24 @@ function Cards({ task, fetchTasks, startLoading, stopLoading }) {
         }
     };
     const inProgressStatus = () => {
-        startLoading();
-        setCardMenu(!isCardMenu);
         putStatus(task._id, 'In Progress');
         fetchTasks();
-        stopLoading();
+        toggleCardMenu()
     };
     const toDoStatus = () => {
-        startLoading();
-        setCardMenu(!isCardMenu);
         putStatus(task._id, 'To Do');
         fetchTasks();
-        stopLoading();
+        toggleCardMenu()
     };
     const doneStatus = () => {
-        startLoading();
-        setCardMenu(!isCardMenu);
         putStatus(task._id, 'Done');
         fetchTasks();
-        stopLoading();
+        toggleCardMenu()
     };
     const removeTask = () => {
-        startLoading();
-        setCardMenu(!isCardMenu);
         deleteTask(task._id);
         fetchTasks();
-        stopLoading();
+        toggleCardMenu()
     };
     const statusDropdown = (status) => {
         if (status === 'To Do') {
@@ -85,9 +80,7 @@ function Cards({ task, fetchTasks, startLoading, stopLoading }) {
             )
         }
     }
-    const toggleCardMenu = () => {
-        setCardMenu(!isCardMenu);
-    }
+
     return (
         <div className="Cards">
             <div className="Cards-top">

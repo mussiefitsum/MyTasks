@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import filterTasks from '../utilities/filterTasks';
 import './Sidebar.css'
 
-function Sidebar() {
+function Sidebar({ tasks }) {
     const [isToggle, setToggle] = useState(false);
     const dropdown = () => {
         setToggle(!isToggle);
@@ -14,11 +15,14 @@ function Sidebar() {
             </div>
             <div className="Sidebar-menu">
                 <div className={`Sidebar-items${ isToggle ? ' items-active' : '' }`}>
-                    <h4 className="Sidebar-task" onClick={dropdown}><i className={`far fa-check-circle Sidebar-icons${ isToggle ? ' icon-active' : '' }`}></i>Tasks</h4>
+                    <div className="Sidebar-items-container" onClick={dropdown}>
+                        <h4 className="Sidebar-task"><i className={`far fa-check-circle Sidebar-icons${ isToggle ? ' icon-active' : '' }`}></i>Tasks</h4>
+                        <i className={`fas fa-${ !isToggle ? 'angle-down' : 'angle-up' }`}></i>
+                    </div>
                     <div className={`Sidebar-dropdown${ isToggle ? ' dropdown-active' : '' }`}>
-                        <p>To Do</p>
-                        <p>In Progress</p>
-                        <p>Done</p>
+                        <p>To Do <span className="Sidebar-status">{filterTasks(tasks, 'To Do').length}</span></p>
+                        <p>In Progress <span className="Sidebar-status">{filterTasks(tasks, 'In Progress').length}</span></p>
+                        <p>Done <span className="Sidebar-status">{filterTasks(tasks, 'Done').length}</span></p>
                     </div>
                 </div>
                 <div className="Sidebar-items">

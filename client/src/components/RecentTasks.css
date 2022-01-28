@@ -7,3 +7,9 @@
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     width: 100%;
 }
+
+.RecentTasks-number {
+    color: #6c757d;
+    opacity: .6;
+    font-size: 22px;
+}

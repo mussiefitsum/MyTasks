@@ -40,6 +40,28 @@ h4 {
     margin-bottom: 40px;
 }
 
+.Sidebar-status {
+    font-size: 12px;
+    background-color: #dde7fc;
+    color: #2445ed;
+    font-weight: 700;
+    padding: 2px 16px;
+    border-radius: 13px;
+    margin-left: 10px;
+}
+
+.Sidebar-items-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.fa-angle-up, .fa-angle-down {
+    color: #2445ed;
+    font-size: 20px;
+}
+
 .Sidebar-icons {
     margin-right: 15px;
     color: #b9c6d0;
@@ -54,7 +76,6 @@ h4 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #e7ebf0;
     padding: 0 30px;
 }
 
@@ -62,8 +83,4 @@ h4 {
     display: flex;
     flex-direction: column;
     font-weight: 300;
-}
-
-.Sidebar-task {
-    cursor: pointer;
 }

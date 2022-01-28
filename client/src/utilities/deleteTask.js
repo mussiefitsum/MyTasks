@@ -1,12 +1,7 @@
 async function deleteTask(taskId) {
-    await fetch('http://localhost:3001/api/task', {
+    await fetch(`http://localhost:3001/api/task/${ taskId }`, {
         method: 'DELETE',
-        credentials: 'include',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ id: taskId })
+        credentials: 'include'
     });
 }
 

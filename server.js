@@ -122,8 +122,8 @@ app.post('/api/task', isLoggedIn, async (req, res) => {
     await task.save();
 });
 
-app.delete('/api/task', isLoggedIn, async (req, res) => {
-    const { id } = req.body;
+app.delete('/api/task/:id', isLoggedIn, async (req, res) => {
+    const { id } = req.params;
     await Task.findByIdAndDelete(id);
 });
 
