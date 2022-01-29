@@ -1,15 +1,16 @@
+import React, { useState } from 'react';
 import Navbar from './Navbar';
 import RecentTasks from './RecentTasks';
 import Form from './Form';
-import React, { useState } from 'react';
+import filterTasks from '../utilities/filterTasks';
 import './Tasks.css';
 
-function Tasks({ tasks, isLoading, fetchTasks }) {
+function Tasks({ tasks, isLoading, fetchTasks, status }) {
     const [taskForm, setForm] = useState(false);
     const toggleForm = () => {
         setForm(!taskForm);
     }
-
+    const MyTasks = filterTasks(tasks, status);
     const addTask = (task) => {
         const postTask = async () => {
             try {
@@ -22,8 +23,7 @@ function Tasks({ tasks, isLoading, fetchTasks }) {
                     },
                     body: JSON.stringify(task)
                 });
-                const data = await res.json();
-                console.log(data);
+                if (res.ok) return res;
             } catch (e) {
                 console.log(e);
             }
@@ -37,7 +37,7 @@ function Tasks({ tasks, isLoading, fetchTasks }) {
             <Navbar />
             <div className="Tasks-container">
                 <button className="Tasks-button" onClick={toggleForm}>+ New Task</button>
-                <RecentTasks tasks={tasks} fetchTasks={fetchTasks} isLoading={isLoading} />
+                <RecentTasks tasks={MyTasks} fetchTasks={fetchTasks} isLoading={isLoading} status={status} />
             </div>
             {taskForm ? <Form toggleForm={toggleForm} addTask={addTask} /> : null}
         </div>

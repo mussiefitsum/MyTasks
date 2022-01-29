@@ -64,7 +64,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 const isLoggedIn = (req, res, next) => {
     if (!req.user) {
-        res.redirect('/login');
+        res.redirect(401, '/login');
         return
     }
     next();
@@ -104,27 +104,50 @@ app.post('/register', async (req, res, next) => {
 })
 
 app.get('/api/task', isLoggedIn, async (req, res) => {
-    const tasks = await Task.find({ user: req.user._id });
-    const sortedTasks = tasks.sort((a, b) => b.date - a.date);
-    res.json(sortedTasks);
+    try {
+        const tasks = await Task.find({ user: req.user._id });
+        const sortedTasks = tasks.sort((a, b) => b.date - a.date);
+        res.status(200).json(sortedTasks);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err)
+    }
 });
 
 app.put('/api/status', isLoggedIn, async (req, res) => {
-    const { id, status } = req.body;
-    const newTask = await Task.findByIdAndUpdate(id, { status: status });
-    await newTask.save();
+    try {
+        const { id, status } = req.body;
+        const newTask = await Task.findByIdAndUpdate(id, { status: status });
+        await newTask.save();
+        res.status(204).send();
+    } catch (err) {
+        console.log(err)
+        res.status(500).send(err)
+    }
 })
 
 app.post('/api/task', isLoggedIn, async (req, res) => {
-    const { name, description, category, status, date } = req.body;
-    const task = new Task({ name, description, category, status, date });
-    task.user = req.user._id;
-    await task.save();
+    try {
+        const { name, description, category, status, date } = req.body;
+        const task = new Task({ name, description, category, status, date });
+        task.user = req.user._id;
+        await task.save();
+        res.status(201).send('Successfully created task');
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err)
+    }
 });
 
 app.delete('/api/task/:id', isLoggedIn, async (req, res) => {
-    const { id } = req.params;
-    await Task.findByIdAndDelete(id);
+    try {
+        const { id } = req.params;
+        await Task.findByIdAndDelete(id);
+        res.status(204).send();
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err)
+    }
 });
 
 app.get('/logout', (req, res) => {

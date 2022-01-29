@@ -31,6 +31,18 @@
     display: none;
 }
 
+.Sidebar-dropdown-items {
+    cursor: pointer;
+    margin: 18px 18px;
+    color: #6c757d;
+    font-weight: 600;
+    font-size: 16.5px;
+}
+
+.Sidebar-items-active {
+    color: #2445ed;
+}
+
 h4 {
     font-size: 19px;
 }
@@ -59,7 +71,7 @@ h4 {
 
 .fa-angle-up, .fa-angle-down {
     color: #2445ed;
-    font-size: 20px;
+    font-size: 21px;
 }
 
 .Sidebar-icons {
