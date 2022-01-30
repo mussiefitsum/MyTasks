@@ -17,6 +17,7 @@
     font-size: 19px;
     cursor: pointer;
     color: #6c757d;
+    opacity: .5;
 }
 
 .Cards-dropdown {

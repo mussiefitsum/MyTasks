@@ -114,6 +114,18 @@ app.get('/api/task', isLoggedIn, async (req, res) => {
     }
 });
 
+app.get('/api/task/search', isLoggedIn, async (req, res) => {
+    try {
+        const name = req.query.task;
+        const tasks = await Task.find({ user: req.user._id });
+        const results = tasks.filter(task => task.name.toLowerCase().includes(name.toLowerCase()))
+        res.status(200).json(results);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+})
+
 app.put('/api/status', isLoggedIn, async (req, res) => {
     try {
         const { id, status } = req.body;

@@ -6,7 +6,7 @@ import './App.css';
 function App() {
   const [taskArr, setTaskArr] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  const [status, setStatus] = useState('Recent')
+  const [status, setStatus] = useState('Recent');
 
   const allTasks = () => {
     setStatus('Recent')
@@ -31,10 +31,26 @@ function App() {
   const stopLoading = () => {
     setLoading(false);
   }
+
+  const searchTasks = async (query) => {
+    try {
+      const res = await fetch(`http://localhost:3001/api/task/search?task=${ query }`, { credentials: 'include' });
+      if (!res.ok) {
+        throw new Error('Something went wrong when fetching your tasks')
+      } else {
+        const results = await res.json();
+        setTaskArr(results);
+      }
+    } catch (err) {
+      console.log('Oops')
+      console.log(err)
+    }
+  }
+
   const fetchTasks = useCallback(async () => {
     startLoading();
     try {
-      const res = await fetch('http://localhost:3001/api/task', { credentials: 'include', redirect: 'follow' });
+      const res = await fetch('http://localhost:3001/api/task', { credentials: 'include' });
       if (!res.ok) {
         throw new Error('Something went wrong when fetching your tasks')
       } else {
@@ -55,7 +71,7 @@ function App() {
     <div className="App">
       <Sidebar tasks={taskArr} status={status} todoTasks={todoTasks} inProgressTasks={inProgressTasks} doneTasks={doneTasks} allTasks={allTasks} />
       <div className="App-content">
-        <Tasks tasks={taskArr} isLoading={isLoading} fetchTasks={fetchTasks} status={status} />
+        <Tasks tasks={taskArr} isLoading={isLoading} fetchTasks={fetchTasks} status={status} searchTasks={searchTasks} />
       </div>
     </div>
   );

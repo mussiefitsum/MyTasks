@@ -5,12 +5,13 @@ import Form from './Form';
 import filterTasks from '../utilities/filterTasks';
 import './Tasks.css';
 
-function Tasks({ tasks, isLoading, fetchTasks, status }) {
+function Tasks({ tasks, isLoading, fetchTasks, status, searchTasks }) {
     const [taskForm, setForm] = useState(false);
     const toggleForm = () => {
         setForm(!taskForm);
     }
-    const MyTasks = filterTasks(tasks, status);
+    let myTasks = filterTasks(tasks, status);
+
     const addTask = (task) => {
         const postTask = async () => {
             try {
@@ -34,10 +35,10 @@ function Tasks({ tasks, isLoading, fetchTasks, status }) {
     }
     return (
         <div className="Tasks">
-            <Navbar />
+            <Navbar searchTasks={searchTasks} />
             <div className="Tasks-container">
                 <button className="Tasks-button" onClick={toggleForm}>+ New Task</button>
-                <RecentTasks tasks={MyTasks} fetchTasks={fetchTasks} isLoading={isLoading} status={status} />
+                <RecentTasks tasks={myTasks} fetchTasks={fetchTasks} isLoading={isLoading} status={status} />
             </div>
             {taskForm ? <Form toggleForm={toggleForm} addTask={addTask} /> : null}
         </div>

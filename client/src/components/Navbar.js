@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './Navbar.css'
 
-function Navbar() {
+function Navbar({ searchTasks }) {
     const [taskSearch, setTaskSearch] = useState('');
     const handleChange = (evt) => {
+        searchTasks(evt.target.value);
         setTaskSearch(evt.target.value);
     }
     return (
