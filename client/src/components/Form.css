@@ -66,6 +66,12 @@ textarea, input {
     font-size: 15px;
 }
 
+.Form-select {
+    width: 98%;
+    height: 30px;
+    font-size: 15px;
+}
+
 .Form-button {
     border-radius: .2rem;
     color: white;

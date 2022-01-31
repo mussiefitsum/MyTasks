@@ -11,6 +11,8 @@ const taskSchema = new Schema({
     },
     category: {
         type: String,
+        required: true,
+        enum: ['Personal', 'Productivity', 'Other']
     },
     status: {
         type: String,

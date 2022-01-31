@@ -69,8 +69,13 @@ h4 {
     cursor: pointer;
 }
 
-.fa-angle-up, .fa-angle-down {
-    color: #2445ed;
+.fa-angle-up {
+    color: #2446ed;
+    font-size: 21px;
+}
+
+.fa-angle-down {
+    color: #6c757d;
     font-size: 21px;
 }
 

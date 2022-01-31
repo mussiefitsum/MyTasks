@@ -39,7 +39,12 @@ function Form({ toggleForm, addTask }) {
                     <div className="Form-group">
                         <label htmlFor="category">Category</label>
                         <br />
-                        <input id="category" name="category" type="text" className="Form-input" placeholder="Enter your category" onChange={handleChange} value={category} />
+                        <select id="category" name="category" className="Form-select" onChange={handleChange} value={category} required>
+                            <option value="" disabled>Select a Category</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Productivity">Productivity</option>
+                            <option value="Other">Other</option>
+                        </select>
                     </div>
                     <button className="Form-button">Create Task</button>
                 </form>
