@@ -1,0 +1,128 @@
+html, body {
+    font-family: 'Sora', sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: 0 auto;
+}
+
+header {
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%);
+    margin-bottom: 20px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 5px 60px;
+    flex-wrap: wrap;
+}
+
+.navbar-logo{
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo h1 {
+    font-size: 30px;
+}
+
+.navbar-logo img {
+    width: 33px;
+    height: 33px;
+}
+
+.nav-items {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav-link {
+    margin-right: 50px;
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: #2445ed;
+}
+
+#nav-button {
+    background-color: #2445ed;
+    padding: 13px 17px;
+    color: white;
+    border-radius: .2rem;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#nav-button:hover {
+    background-color: #3c5bef;
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.intro-text {
+    overflow: wrap;
+    width: 40%;
+    margin-right: 80px;
+}
+
+.intro-text h2 {
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.intro-text span {
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.intro-text p {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 45px;
+}
+
+.intro-image {
+    width: 40%;
+    height: auto;
+} 
+
+.intro-buttons a {
+    background-color: #2445ed;
+    padding: 20px 35px;
+    color: white;
+    border-radius: .2rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.intro-buttons a:hover {
+    background-color: #3c5bef;
+}
+
+#info-button {
+    background-color: black;
+    margin-left: 30px;
+}
+
+#info-button:hover {
+    background-color: #313131;
+}
