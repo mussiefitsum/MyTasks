@@ -33,7 +33,7 @@ function Sidebar({ tasks, todoTasks, inProgressTasks, doneTasks, allTasks, statu
                 </div>
                 <div className={`Sidebar-items${ categoryToggle ? ' items-active' : '' }`}>
                     <div className="Sidebar-items-container" onClick={categoryDropdown}>
-                        <h4><i className="far fa-folder Sidebar-icons"></i>Categories</h4>
+                        <h4><i className={`far fa-folder Sidebar-icons${ categoryToggle ? ' icon-active' : '' }`}></i>Categories</h4>
                         <i className={`fas fa-${ !categoryToggle ? 'angle-down' : 'angle-up' }`}></i>
                     </div>
                     <div className={`Sidebar-dropdown${ categoryToggle ? ' dropdown-active' : '' }`}>

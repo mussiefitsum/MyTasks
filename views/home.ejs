@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/home.css">
+    <script src="https://kit.fontawesome.com/dbfc7aa0af.js" crossorigin="anonymous"></script>
     <title>Home</title>
 </head>
 
@@ -23,16 +24,16 @@
             </div>
             <div class="nav-items">
                 <div class="nav-link">
-                    <a>About</a>
-                </div>
-                <div class="nav-link">
                     <a>Features</a>
                 </div>
                 <div class="nav-link">
-                    <a>Login</a>
+                    <a>About</a>
+                </div>
+                <div class="nav-link">
+                    <a href="/login">Login</a>
                 </div>
                 <div class="nav-link" id="nav-button">
-                    <a>Sign Up For Free</a>
+                    <a href="/register">Sign Up For Free</a>
                 </div>
             </div>
         </div>
@@ -41,16 +42,50 @@
         <section class="intro">
             <div class="intro-text">
                 <h2>Manage Your <span>Tasks</span> Efficiently</h2>
-                <p>A simple and free application to help you stay on top of your duties. Never lost track of your
+                <p>A simple and free application to help you stay on top of your duties. Never lose track of your
                     responsibilities again!
                 </p>
                 <div class="intro-buttons">
-                    <a>Get Started</a>
+                    <a href="/register">Get Started</a>
                     <a id="info-button">Learn More</a>
                 </div>
             </div>
             <img class="intro-image"
                 src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1643765578/MyTasks/mytasks-intro-image_fw8kho.png">
+        </section>
+        <section class="features">
+            <h2>Features</h2>
+            <div class="features-container">
+                <div class="features-card">
+                    <div class="features-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>User Friendly</h4>
+                        <p>Simple to use and doesn't require any training or extensive
+                            documentation.</p>
+                </div>
+                <div class="features-card">
+                    <div class="features-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Stay Organized</h4>
+                        <p>Tasks can be sorted and filtered by status and category.</p>
+                </div>
+                <div class="features-card">
+                    <div class="features-icon">
+                        <i class="fas fa-mobile"></i>
+                    </div>
+                    <h3>Flexible</h4>
+                        <p>Accessible on mobile and desktop platforms.</p>
+                </div>
+                <div class="features-card">
+                    <div class="features-icon">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <h3>100% Free</h4>
+                        <p>The application is 100% free to use.</p>
+                </div>
+            </div>
         </section>
     </main>
 </body>
