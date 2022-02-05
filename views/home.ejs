@@ -17,17 +17,19 @@
 <body>
     <header>
         <div class="navbar">
-            <div class="navbar-logo">
-                <img src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1642360776/MyTasks/tasks_rxewg9.png"
-                    alt="" />
-                <h1>MyTasks</h1>
-            </div>
+            <a id="logo-link" href="/">
+                <div class="navbar-logo">
+                    <img src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1642360776/MyTasks/tasks_rxewg9.png"
+                        alt="MyTasks Logo" />
+                    <h1>MyTasks</h1>
+                </div>
+            </a>
             <div class="nav-items">
                 <div class="nav-link">
-                    <a>Features</a>
+                    <a href="#features">Features</a>
                 </div>
                 <div class="nav-link">
-                    <a>About</a>
+                    <a href="#about">About</a>
                 </div>
                 <div class="nav-link">
                     <a href="/login">Login</a>
@@ -47,14 +49,15 @@
                 </p>
                 <div class="intro-buttons">
                     <a href="/register">Get Started</a>
-                    <a id="info-button">Learn More</a>
+                    <a id="info-button" href="#features">Learn More</a>
                 </div>
             </div>
             <img class="intro-image"
                 src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1643765578/MyTasks/mytasks-intro-image_fw8kho.png">
         </section>
+        <a name="features"></a>
         <section class="features">
-            <h2>Features</h2>
+            <h2 class="features-title">Features</h2>
             <div class="features-container">
                 <div class="features-card">
                     <div class="features-icon">
@@ -87,7 +90,29 @@
                 </div>
             </div>
         </section>
+        <a name="about"></a>
+        <section class="about">
+            <h2 class="about-title">About</h2>
+            <div class="about-container">
+                <img class="about-image"
+                    src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1644027807/MyTasks/my-tasks-about_izvryz.png"
+                    alt="">
+                <div class="about-text">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </section>
     </main>
+    <footer>
+        <div class="footer-info">
+            <p>Designed and developed by Mussie Fitsum</p>
+            <p>&#169 2022 MyTasks</p>
+        </div>
+    </footer>
 </body>
 
 </html>
