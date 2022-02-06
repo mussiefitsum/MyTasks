@@ -8,7 +8,7 @@ textarea, input {
 
 .Form {
     position: fixed;
-    z-index: 1;
+    z-index: 5;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.25);
@@ -62,7 +62,7 @@ textarea, input {
 
 .Form-description-area {
     background-color: white;
-    border: 1px solid black;
+    border: .5px solid black;
     padding: 3px;
 }
 
@@ -78,7 +78,7 @@ textarea, input {
 }
 
 .Form-description {
-    width: 80%;
+    width: 95%;
     height: 140px;
     font-size: 15px;
     resize: none;
@@ -109,5 +109,23 @@ textarea, input {
     .Form-content {
         width: 60%;
         left: 20%;
+    }
+}
+
+@media (max-width: 570px) {
+    .Form-content h3 {
+        font-size: 20px;
+    }
+    .Form-content {
+        width: 80%;
+        left: 5%;
+        margin-top: -30px;
+    }
+}
+
+@media (max-width: 376px) {
+    .Form-content {
+        width: 85%;
+        left: 1%;
     }
 }

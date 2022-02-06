@@ -17,6 +17,7 @@ input:focus::placeholder {
     align-items: center;
     padding: 20px 0px;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%);
+    z-index: 4;
 }
 
 .Navbar-toggle {
@@ -41,7 +42,7 @@ input:focus::placeholder {
     color: #b9c6d0
 }
 
-.Navbar-logout {
+.Navbar-logout a {
     text-decoration: none;
     color: black;
     font-weight: 700;
@@ -64,4 +65,28 @@ input:focus::placeholder {
         cursor: pointer;
     }
 
+}
+
+@media (max-width: 570px) {
+    .Navbar-logout {
+        display: none;
+    }
+
+    .Navbar-search {
+        width: 200px;
+    }
+
+    .Navbar-menu-toggle {
+        margin-right: 40px;
+    }
+}
+
+@media (max-width: 380px) {
+    .Navbar-search {
+        width: 160px;
+    }
+
+    .Navbar-menu-toggle {
+        margin-right: 15px;
+    }
 }

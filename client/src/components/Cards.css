@@ -96,10 +96,25 @@
     .Cards-description {
         font-size: 13px;
     }
+
+    .Cards-status {
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 768px) {
     .Cards {
-        width: 120px;
+        width: 75vw;
+    }
+
+    .Cards-dropdown {
+        margin-left: 0;
+        right: 18px;
+    }
+}
+
+@media (max-width: 322px) {
+    .Cards {
+        width: 68vw;
     }
 }

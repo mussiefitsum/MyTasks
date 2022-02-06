@@ -66,6 +66,10 @@ header {
     color: #2445ed;
 }
 
+.nav-link-toggle {
+    display: none;
+}
+
 #logo-link {
     color: black;
 }
@@ -119,11 +123,16 @@ header {
 .intro-image {
     width: 36%;
     height: auto;
-} 
+}
+
+.intro-buttons {
+    width: 100%;
+}
 
 .intro-buttons a {
     background-color: #2445ed;
     padding: 20px 35px;
+    height: 20px;
     color: white;
     border-radius: .2rem;
     font-weight: 600;
@@ -144,9 +153,10 @@ header {
 }
 
 .features {
-    background-color: #eef4fd;
+    background-color: #F7FAFF;
     text-align: center;
     padding: 60px 0px;
+    width: 100vw;
 }
 
 .features-title, .about-title {
@@ -155,9 +165,9 @@ header {
 
 .features-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: stretch;
-    width: 90vw;
+    width: 88%;
     margin: 0 auto;
 }
 
@@ -171,7 +181,6 @@ header {
     padding: 30px 30px;
     box-shadow: 0 0px 8px 0 #dfe6f1;
     margin-bottom: 20px;
-    margin-right: 30px;
 }
 
 .features-card:last-of-type {
@@ -184,9 +193,9 @@ header {
 }
 
 .features-card p {
-    color: #6c757d;
-    font-weight: 500;
+    font-weight: 400;
     width: 100%;
+    padding: 0px 10px;
 }
 
 .features-icon {
@@ -240,4 +249,171 @@ footer {
     text-align: center;
     color: white;
     font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+    .intro-text {
+        width: 50%;
+        margin-right: 50px;
+    }
+
+    .features-card {
+        width: 130px;
+    }
+
+    .features-card h3 {
+        font-size: 20px;
+    }
+
+    .features-card p {
+        font-size: 14px;
+    }
+
+    .about-image {
+        width: 350px;
+    }
+}
+
+@media (max-width: 834px) {
+    .nav-items {
+        display: none;
+        margin-left: 0;
+        text-align: center;
+    }
+    .nav-link {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .navbar, .nav-items {
+        flex-direction: column;
+        left: 0;
+    }
+    .nav-link-toggle {
+        align-self: flex-end;
+        display: initial;
+        position: absolute;
+        cursor: pointer;
+        right: 8%;
+        margin-top: 10px;
+    }
+    .nav-background {
+        background-color: white;
+     }
+     .nav-link-toggle-show {
+        display: flex;
+        background-color: white;
+        width: 100%;
+     }
+
+     #logo-link {
+        align-self: flex-start;
+     }
+
+     #nav-button {
+         margin-top: 10px;
+     }
+}
+
+@media (max-width: 770px) {
+    .intro {
+        margin-top: 40px;
+        flex-wrap: wrap-reverse;
+    }
+
+    .intro-text {
+        width: 80%;
+        margin-right: 0;
+    }
+
+    .intro-text h2 {
+        font-size: 45px;
+    }
+
+    .intro-image {
+        width: 350px;
+    }
+
+    .features-container {
+        flex-wrap: wrap;
+    }
+
+    .about {
+        padding-bottom: 0;
+    }
+
+    .about-container {
+        flex-wrap: wrap;
+    }
+
+    .about-text {
+        width: 90%;
+    }
+}
+
+@media (max-width: 475px) {
+    .intro-text h2 {
+        font-size: 30px;
+    }
+
+    .intro-text p, .about-text {
+        font-size: 16px;
+    }
+
+    .intro-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .intro-image {
+        width: 280px;
+    }
+
+    .about-image {
+        width: 250px;
+    }
+
+    .intro-buttons {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 80%;
+        margin-left: 20px;
+    }
+
+    #info-button {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    .features-title, .about-title {
+        font-size: 27px;
+    }
+
+    .nav-link-toggle {
+        margin-top: 10px;
+        font-size: 13px;
+    }
+
+    .navbar-logo h1 {
+        font-size: 23px;
+    }
+
+    .navbar {
+        padding: 5px 20px;
+    }
+
+    .features-container {
+        padding-top: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .features-card {
+        width: 60%;
+    }
+
+    .footer-info {
+        font-size: 13px;
+    }
 }

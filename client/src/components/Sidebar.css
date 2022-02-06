@@ -15,11 +15,16 @@
     align-items: center;
 }
 
+.Sidebar-logout {
+    display: none;
+}
+
 .Sidebar-brand {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: 10px;
 }
 
 .Sidebar-brand img {
@@ -143,9 +148,38 @@ h4 {
 
     .Sidebar-show {
         display: block;
-        position: absolute;
-        z-index: 2;
+        position: fixed;
+        z-index: 5;
         left: 0;
         width: 35%;
+    }
+}
+
+@media (max-width: 570px) {
+    .Sidebar-show {
+        width: 50%;
+    }
+
+    .Sidebar-logout {
+        display: block;
+        justify-self: flex-end;
+        text-align: center;
+        margin-top: 300px;
+    }
+
+    .Sidebar-logout a {
+        color: black;
+        text-decoration: none;
+        font-weight: 700;
+    }
+
+    .Sidebar-logout a:hover {
+        color: #2445ed;
+    }
+}
+
+@media (max-width: 375px) {
+    .Sidebar-show {
+        width: 70%;
     }
 }

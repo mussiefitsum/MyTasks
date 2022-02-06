@@ -22,9 +22,35 @@
     background-color: #3c5bef;
 }
 
+.Tasks-mobile-button {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .Tasks-container {
         width: 88%;
         margin: 0 auto;
+    }
+}
+
+@media (max-width: 570px) {
+    .Tasks-button {
+        display: none;
+    }
+
+    .Tasks-mobile-button {
+        display: block;
+        position: fixed;
+        bottom: 30px;
+        right: 40px;
+        width: 70px;
+        z-index: 1;
+    }
+}
+
+@media (max-width: 430px) {
+    .Tasks-mobile-button {
+        width: 60px;
+        right: 30px;
     }
 }

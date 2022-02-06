@@ -87,3 +87,19 @@ a {
 .form-button:hover {
     background-color: #3c5bef;
 }
+
+@media (max-width: 584px) {
+    .form {
+        width: 280px;
+    }
+
+    .form p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 380px) {
+    .form {
+        width: 212px;
+    }
+}

@@ -9,7 +9,7 @@ function Navbar({ searchTasks, toggleSidebar }) {
     }
     return (
         <div className="Navbar">
-            <div className="Navbar-item">
+            <div className="Navbar-item Navbar-menu-toggle">
                 <i className="fas fa-bars Navbar-toggle" onClick={toggleSidebar}></i>
             </div>
             <div className="Navbar-item">
@@ -18,8 +18,8 @@ function Navbar({ searchTasks, toggleSidebar }) {
                     <input type="text" className="Navbar-search" onChange={handleChange} value={taskSearch} placeholder="Search for tasks" />
                 </div>
             </div>
-            <div className="Navbar-item">
-                <a className="Navbar-logout" href="http://localhost:3001/logout">Logout</a>
+            <div className="Navbar-item Navbar-logout">
+                <a href="http://localhost:3001/logout">Logout</a>
             </div>
         </div>
     )

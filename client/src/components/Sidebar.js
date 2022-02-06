@@ -56,6 +56,9 @@ function Sidebar({ tasks, hideSidebar, sidebar, todoTasks, inProgressTasks, done
                         <div className={`Sidebar-dropdown-items${ category === 'Other' ? ' Sidebar-items-active' : '' }`} onClick={otherTasks}>Other <span className="Sidebar-status">{categorizeTasks(tasks, 'Other').length}</span></div>
                     </div>
                 </div>
+                <div className="Sidebar-items Sidebar-logout">
+                    <a href="http://localhost:3001/logout">Logout</a>
+                </div>
             </div>
         </div>
     )
