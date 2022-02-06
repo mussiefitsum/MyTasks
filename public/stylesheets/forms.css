@@ -45,6 +45,10 @@ a {
     text-decoration: none;
 }
 
+.icon-focused {
+    color: #2445ed;
+}
+
 .logo {
     width: 70px;
     margin-bottom: 30px;
@@ -62,6 +66,10 @@ a {
     padding: 10px;
     border-bottom: 1px solid #b9c6d0;
     margin-bottom: 20px;
+}
+
+.focused {
+    border-bottom: 1px solid #2445ed;
 }
 
 .form-button {

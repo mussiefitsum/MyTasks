@@ -19,6 +19,10 @@ input:focus::placeholder {
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%);
 }
 
+.Navbar-toggle {
+    display: none;
+}
+
 .Navbar-search {
     background-color: #F5F5F5;
     border: none;
@@ -45,4 +49,19 @@ input:focus::placeholder {
 
 .Navbar-logout:hover {
     color: #3c5bef;
+}
+
+@media (max-width: 836px) {
+    .Navbar-search {
+        width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .Navbar-toggle {
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
 }

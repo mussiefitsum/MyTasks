@@ -102,3 +102,50 @@ h4 {
     flex-direction: column;
     font-weight: 300;
 }
+
+@media (max-width: 1140px) {
+    .Sidebar {
+        width: 25%;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+    .Sidebar-dropdown-items {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 836px) {
+    h1 {
+        font-size: 24px;
+    }
+    h4 {
+        font-size: 15px;
+    }
+    .Sidebar-icons {
+        font-size: 18px;
+    }
+
+    .Sidebar-dropdown-items {
+        font-size: 12px;
+        width: 100%;
+    }
+    .Sidebar-status {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 768px) {
+    .Sidebar {
+        display: none;
+    }
+
+    .Sidebar-show {
+        display: block;
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        width: 35%;
+    }
+}

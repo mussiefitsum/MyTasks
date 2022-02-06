@@ -30,23 +30,23 @@ function Cards({ task, fetchTasks }) {
             return <span className="Cards-status" style={{ color: '#28a745' }}><i className="fas fa-check-circle"></i>  {status.toUpperCase()}</span>
         }
     };
-    const inProgressStatus = () => {
-        putStatus(task._id, 'In Progress');
+    const inProgressStatus = async () => {
+        await putStatus(task._id, 'In Progress');
         fetchTasks();
         toggleCardMenu()
     };
-    const toDoStatus = () => {
-        putStatus(task._id, 'To Do');
+    const toDoStatus = async () => {
+        await putStatus(task._id, 'To Do');
         fetchTasks();
         toggleCardMenu()
     };
-    const doneStatus = () => {
-        putStatus(task._id, 'Done');
+    const doneStatus = async () => {
+        await putStatus(task._id, 'Done');
         fetchTasks();
         toggleCardMenu()
     };
-    const removeTask = () => {
-        deleteTask(task._id);
+    const removeTask = async () => {
+        await deleteTask(task._id);
         fetchTasks();
         toggleCardMenu()
     };

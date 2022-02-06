@@ -78,3 +78,28 @@
 .Cards-description {
     font-size: 16px;
 }
+
+@media (max-width: 1140px) {
+    .Cards {
+        width: 140px;
+        margin-right: 20px;
+    }
+
+    .Cards:last-of-type {
+        margin-right: 0px;
+    }
+
+    .Cards-task {
+        font-size: 20px;
+    }
+
+    .Cards-description {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .Cards {
+        width: 120px;
+    }
+}

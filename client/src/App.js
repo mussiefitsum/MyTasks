@@ -7,38 +7,57 @@ function App() {
   const [taskArr, setTaskArr] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [status, setStatus] = useState('Recent');
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState('');
+  const [sidebar, setSidebar] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebar(!sidebar);
+  }
 
   const allTasks = () => {
     setStatus('Recent');
     setCategory('');
+    toggleSidebar();
+  }
+
+  const hideSidebar = () => {
+    setSidebar(false);
   }
 
   const todoTasks = () => {
     setStatus('To Do');
     setCategory('');
+    toggleSidebar();
   }
 
   const inProgressTasks = () => {
     setStatus('In Progress');
     setCategory('');
+    toggleSidebar();
   }
 
   const doneTasks = () => {
     setStatus('Done');
     setCategory('');
+    toggleSidebar();
   }
 
   const personalTasks = () => {
     setCategory('Personal');
+    setStatus('Recent');
+    toggleSidebar();
   }
 
   const productiveTasks = () => {
     setCategory('Productivity');
+    setStatus('Recent');
+    toggleSidebar();
   }
 
   const otherTasks = () => {
     setCategory('Other');
+    setStatus('Recent');
+    toggleSidebar();
   }
 
   const startLoading = () => {
@@ -86,9 +105,10 @@ function App() {
   }, [fetchTasks]);
   return (
     <div className="App">
-      <Sidebar tasks={taskArr} status={status} category={category} todoTasks={todoTasks} inProgressTasks={inProgressTasks} doneTasks={doneTasks} allTasks={allTasks} personalTasks={personalTasks} productiveTasks={productiveTasks} otherTasks={otherTasks} />
+      <Sidebar tasks={taskArr} hideSidebar={hideSidebar} sidebar={sidebar} status={status} category={category} todoTasks={todoTasks} inProgressTasks={inProgressTasks} doneTasks={doneTasks} allTasks={allTasks} personalTasks={personalTasks} productiveTasks={productiveTasks} otherTasks={otherTasks} />
+      {sidebar ? <div className="App-dark-wrapper"></div> : ''}
       <div className="App-content">
-        <Tasks tasks={taskArr} isLoading={isLoading} fetchTasks={fetchTasks} status={status} category={category} searchTasks={searchTasks} />
+        <Tasks tasks={taskArr} sidebar={sidebar} toggleSidebar={toggleSidebar} isLoading={isLoading} fetchTasks={fetchTasks} status={status} category={category} searchTasks={searchTasks} />
       </div>
     </div>
   );

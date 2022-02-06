@@ -21,3 +21,10 @@
 .Tasks-button:hover {
     background-color: #3c5bef;
 }
+
+@media (max-width: 768px) {
+    .Tasks-container {
+        width: 88%;
+        margin: 0 auto;
+    }
+}

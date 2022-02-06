@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import filterTasks from '../utilities/filterTasks';
 import categorizeTasks from '../utilities/categorizeTasks';
 import './Sidebar.css'
 
-function Sidebar({ tasks, todoTasks, inProgressTasks, doneTasks, allTasks, status, category, personalTasks, productiveTasks, otherTasks }) {
+function Sidebar({ tasks, hideSidebar, sidebar, todoTasks, inProgressTasks, doneTasks, allTasks, status, category, personalTasks, productiveTasks, otherTasks }) {
     const [statusToggle, setStatusToggle] = useState(false);
     const [categoryToggle, setCategoryToggle] = useState(false);
+    const side = useRef(null);
+
+    useEffect(() => {
+        const handleClick = e => {
+            if (side.current.contains(e.target)) {
+                return;
+            }
+            hideSidebar();
+        };
+        document.addEventListener('mousedown', handleClick);
+        return () => {
+            document.removeEventListener('mousedown', handleClick);
+        }
+    }, [hideSidebar]);
     const statusDropdown = () => {
         setStatusToggle(!statusToggle);
     }
@@ -13,7 +27,7 @@ function Sidebar({ tasks, todoTasks, inProgressTasks, doneTasks, allTasks, statu
         setCategoryToggle(!categoryToggle);
     }
     return (
-        <div className="Sidebar">
+        <div className={`Sidebar${ sidebar ? ' Sidebar-show' : '' }`} ref={side}>
             <div className="Sidebar-brand">
                 <img src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1642360776/MyTasks/tasks_rxewg9.png" alt="" />
                 <h1>MyTasks</h1>

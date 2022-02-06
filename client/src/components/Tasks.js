@@ -6,7 +6,7 @@ import filterTasks from '../utilities/filterTasks';
 import categorizeTasks from '../utilities/categorizeTasks';
 import './Tasks.css';
 
-function Tasks({ tasks, isLoading, fetchTasks, status, searchTasks, category }) {
+function Tasks({ tasks, toggleSidebar, isLoading, fetchTasks, status, searchTasks, category }) {
     const [taskForm, setForm] = useState(false);
     const toggleForm = () => {
         setForm(!taskForm);
@@ -14,7 +14,7 @@ function Tasks({ tasks, isLoading, fetchTasks, status, searchTasks, category }) 
     let myTasks = filterTasks(tasks, status);
     let finalTasks = categorizeTasks(myTasks, category)
 
-    const addTask = (task) => {
+    const addTask = async (task) => {
         const postTask = async () => {
             try {
                 const res = await fetch('http://localhost:3001/api/task', {
@@ -31,16 +31,16 @@ function Tasks({ tasks, isLoading, fetchTasks, status, searchTasks, category }) 
                 console.log(e);
             }
         }
-        postTask();
+        await postTask();
         fetchTasks();
         toggleForm();
     }
     return (
         <div className="Tasks">
-            <Navbar searchTasks={searchTasks} />
+            <Navbar searchTasks={searchTasks} toggleSidebar={toggleSidebar} />
             <div className="Tasks-container">
                 <button className="Tasks-button" onClick={toggleForm}>+ New Task</button>
-                <RecentTasks tasks={finalTasks} fetchTasks={fetchTasks} isLoading={isLoading} status={status} />
+                <RecentTasks tasks={finalTasks} fetchTasks={fetchTasks} isLoading={isLoading} status={status} category={category} />
             </div>
             {taskForm ? <Form toggleForm={toggleForm} addTask={addTask} /> : null}
         </div>

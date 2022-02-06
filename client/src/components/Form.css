@@ -60,10 +60,29 @@ textarea, input {
     font-size: 15px;
 }
 
+.Form-description-area {
+    background-color: white;
+    border: 1px solid black;
+    padding: 3px;
+}
+
+.Form-character-count {
+    text-align: right;
+    margin-right: 10px;
+    font-size: 14px;
+    opacity: .8;
+}
+
+.red {
+    color: red;
+}
+
 .Form-description {
-    width: 97%;
+    width: 80%;
     height: 140px;
     font-size: 15px;
+    resize: none;
+    border: none;
 }
 
 .Form-select {
@@ -84,4 +103,11 @@ textarea, input {
 
 .Form-button:hover {
     background-color: #3c5bef;
+}
+
+@media (max-width: 836px) {
+    .Form-content {
+        width: 60%;
+        left: 20%;
+    }
 }

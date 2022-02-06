@@ -13,3 +13,12 @@
     opacity: .6;
     font-size: 22px;
 }
+
+@media (max-width: 1140px) {
+    .RecentTasks-container {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+}
