@@ -48,7 +48,7 @@ input:focus::placeholder {
     font-weight: 700;
 }
 
-.Navbar-logout:hover {
+.Navbar-logout a:hover {
     color: #3c5bef;
 }
 

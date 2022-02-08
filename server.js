@@ -7,6 +7,11 @@ const LocalStrategy = require('passport-local').Strategy;
 const methodOverride = require('method-override');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const helmet = require('helmet')
+const mongoSanitize = require('express-mongo-sanitize');
+const ExpressError = require('./utilities/ExpressError');
+const wrapAsync = require('./utilities/wrapAsync');
+const { taskSchema } = require('./schema');
 
 const mongoose = require('mongoose');
 const dbUrl = 'mongodb://localhost:27017/MyTasks';
@@ -23,7 +28,6 @@ const app = express();
 
 const User = require('./models/users');
 const Task = require('./models/tasks');
-const { copyFileSync } = require('fs');
 
 const secret = process.env.SECRET || 'topsecret20'
 
@@ -45,6 +49,8 @@ app.use(cors({
     credentials: true,
 }));
 app.use(bodyParser.json());
+app.use(mongoSanitize());
+app.use(helmet({ contentSecurityPolicy: false, }));
 app.use(session(sessionConfig))
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
@@ -71,6 +77,16 @@ const isLoggedIn = (req, res, next) => {
     next();
 }
 
+const validateTaskSchema = (req, res, next) => {
+    const { error } = taskSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(x => x.message).join(',');
+        throw new ExpressError(msg, 400);
+    } else {
+        next();
+    }
+}
+
 app.get('/', (req, res) => {
     res.render('home');
 });
@@ -78,6 +94,9 @@ app.get('/', (req, res) => {
 app.use(express.static(path.resolve(__dirname, './client/build')));
 
 app.get('/login', (req, res) => {
+    if (req.user) {
+        res.redirect('/app');
+    }
     res.render('login');
 });
 
@@ -86,10 +105,13 @@ app.post('/login', passport.authenticate('local', { failureRedirect: '/login' })
 });
 
 app.get('/register', (req, res) => {
+    if (req.user) {
+        res.redirect('/app');
+    }
     res.render('register');
 });
 
-app.post('/register', async (req, res, next) => {
+app.post('/register', wrapAsync(async (req, res, next) => {
     try {
         const { email, username, password } = req.body;
         const user = new User({ username, email });
@@ -102,9 +124,9 @@ app.post('/register', async (req, res, next) => {
         console.log(e);
         res.redirect('/register')
     }
-})
+}));
 
-app.get('/api/task', isLoggedIn, async (req, res) => {
+app.get('/api/task', isLoggedIn, wrapAsync(async (req, res) => {
     try {
         const tasks = await Task.find({ user: req.user._id });
         const sortedTasks = tasks.sort((a, b) => b.date - a.date);
@@ -113,9 +135,9 @@ app.get('/api/task', isLoggedIn, async (req, res) => {
         console.log(err);
         res.status(500).send(err)
     }
-});
+}));
 
-app.get('/api/task/search', isLoggedIn, async (req, res) => {
+app.get('/api/task/search', isLoggedIn, wrapAsync(async (req, res) => {
     try {
         const name = req.query.task;
         const tasks = await Task.find({ user: req.user._id });
@@ -125,9 +147,9 @@ app.get('/api/task/search', isLoggedIn, async (req, res) => {
         console.log(err);
         res.status(500).send(err);
     }
-})
+}));
 
-app.put('/api/status', isLoggedIn, async (req, res) => {
+app.put('/api/status', isLoggedIn, wrapAsync(async (req, res) => {
     try {
         const { id, status } = req.body;
         const newTask = await Task.findByIdAndUpdate(id, { status: status });
@@ -137,11 +159,11 @@ app.put('/api/status', isLoggedIn, async (req, res) => {
         console.log(err)
         res.status(500).send(err)
     }
-})
+}));
 
-app.post('/api/task', isLoggedIn, async (req, res) => {
+app.post('/api/task', isLoggedIn, validateTaskSchema, wrapAsync(async (req, res) => {
     try {
-        const { name, description, category, status, date } = req.body;
+        const { name, description, category, status, date } = req.body.task;
         const task = new Task({ name, description, category, status, date });
         task.user = req.user._id;
         await task.save();
@@ -150,9 +172,9 @@ app.post('/api/task', isLoggedIn, async (req, res) => {
         console.log(err);
         res.status(500).send(err)
     }
-});
+}));
 
-app.delete('/api/task/:id', isLoggedIn, async (req, res) => {
+app.delete('/api/task/:id', isLoggedIn, wrapAsync(async (req, res) => {
     try {
         const { id } = req.params;
         await Task.findByIdAndDelete(id);
@@ -161,15 +183,32 @@ app.delete('/api/task/:id', isLoggedIn, async (req, res) => {
         console.log(err);
         res.status(500).send(err)
     }
-});
+}));
 
 app.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/')
 });
 
-app.get('*', isLoggedIn, (req, res) => {
+app.get('/app', isLoggedIn, (req, res) => {
     res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
+});
+
+app.all('*', (req, res, next) => {
+    next(new ExpressError('Page Not Found', 404));
+});
+
+app.use('*', (req, res, next) => {
+    next(new ExpressError('Page Not Found', 404));
+});
+
+app.use((err, req, res, next) => {
+    const { statusCode = 500 } = err;
+    if (!err.message) {
+        err.message = 'Oh No. Something Went Wrong.'
+    }
+    res.status(statusCode).render('error', { err });
+    console.log(err);
 });
 
 const port = 3001;

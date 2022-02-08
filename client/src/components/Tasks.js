@@ -24,7 +24,7 @@ function Tasks({ tasks, toggleSidebar, isLoading, fetchTasks, status, searchTask
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(task)
+                    body: JSON.stringify({ task: task })
                 });
                 if (res.ok) return res;
             } catch (e) {
