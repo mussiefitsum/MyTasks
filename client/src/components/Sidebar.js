@@ -30,7 +30,7 @@ function Sidebar({ tasks, hideSidebar, sidebar, todoTasks, inProgressTasks, done
     return (
         <div className={`Sidebar${ sidebar ? ' Sidebar-show' : '' }`} ref={side}>
             <div className="Sidebar-brand">
-                <img crossorigin="" src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1642360776/MyTasks/tasks_rxewg9.png" alt="" />
+                <img src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1642360776/MyTasks/tasks_rxewg9.png" alt="" />
                 <h1>MyTasks</h1>
             </div>
             <div className="Sidebar-menu">

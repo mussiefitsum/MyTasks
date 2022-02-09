@@ -63,9 +63,10 @@ const sessionConfig = {
 }
 
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3000', 'https://res.cloudinary.com/dfuxr1p10/'],
     credentials: true,
 }));
+
 app.use(bodyParser.json());
 app.use(mongoSanitize());
 app.use(secure);
@@ -86,6 +87,12 @@ passport.deserializeUser(User.deserializeUser());
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use((req, res, next) => {
+    res.removeHeader("Cross-Origin-Resource-Policy")
+    res.removeHeader("Cross-Origin-Embedder-Policy")
+    next()
+})
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
