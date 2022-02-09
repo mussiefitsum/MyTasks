@@ -88,6 +88,31 @@ a {
     background-color: #3c5bef;
 }
 
+.error-notification {
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    top: 50px;
+    padding: 10px;
+    width: 400px;
+    color: #842029;
+    background-color: #f8d7da;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: .375rem;
+}
+
+.fade-out {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.fa-exclamation-triangle {
+    color: #842029;
+    font-size: 16px;
+}
+
 @media (max-width: 584px) {
     .form {
         width: 280px;
@@ -101,5 +126,10 @@ a {
 @media (max-width: 380px) {
     .form {
         width: 212px;
+    }
+
+    .error-notification {
+        width: 290px;
+        top: 30px;
     }
 }

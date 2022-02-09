@@ -129,7 +129,7 @@ header {
     width: 100%;
 }
 
-.intro-buttons a {
+.button {
     background-color: #2445ed;
     padding: 20px 35px;
     height: 20px;
@@ -139,7 +139,7 @@ header {
     font-size: 18px;
 }
 
-.intro-buttons a:hover {
+.button:hover {
     background-color: #3c5bef;
 }
 
@@ -230,13 +230,22 @@ header {
 }
 
 .about-title {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .about-text {
     text-align: left;
-    width: 70%;
+    width: 60%;
     align-self: center;
+}
+
+.about-link {
+    color: black;
+    text-decoration: none;
+}
+
+.about-link:hover {
+    color: #2445ed;
 }
 
 footer {

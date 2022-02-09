@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/home.css">
-    <script src="https://kit.fontawesome.com/dbfc7aa0af.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/dbfc7aa0af.js" crossorigin=""></script>
     <title>Home</title>
 </head>
 
@@ -19,7 +19,8 @@
         <div class="navbar">
             <a id="logo-link" href="/">
                 <div class="navbar-logo">
-                    <img src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1642360776/MyTasks/tasks_rxewg9.png"
+                    <img crossorigin=""
+                        src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1642360776/MyTasks/tasks_rxewg9.png"
                         alt="MyTasks Logo" />
                     <h1>MyTasks</h1>
                 </div>
@@ -51,11 +52,11 @@
                     responsibilities again!
                 </p>
                 <div class="intro-buttons">
-                    <a href="/register">Get Started</a>
-                    <a id="info-button" href="#features">Learn More</a>
+                    <a class="button" href="/register">Get Started</a>
+                    <a class="button" id="info-button" href="#features">Learn More</a>
                 </div>
             </div>
-            <img class="intro-image"
+            <img class="intro-image" crossorigin=""
                 src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1643765578/MyTasks/mytasks-intro-image_fw8kho.png">
         </section>
         <a name="features"></a>
@@ -96,15 +97,19 @@
         <section class="about">
             <h2 class="about-title">About</h2>
             <div class="about-container">
-                <img class="about-image"
+                <img class="about-image" crossorigin=""
                     src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1644027807/MyTasks/my-tasks-about_izvryz.png"
                     alt="">
                 <div class="about-text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>Making mental notes of all your commitments can get overwhelming. MyTasks is designed to be
+                        an area for you to keep not of all the work you need to get done, whether it is personal,
+                        work-related, etc.</p>
+                    <p>In addition to categorization, this application also gives you the option
+                        mark the status (To Do, In Progress, and Done) of your stored tasks.</p>
+                    <p>If you need help managing your tasks and are intrigued, then <strong><a class="about-link"
+                                href="/register">sign up here</a></strong>
+                        and give our tool a shot.</p>
+                    <br>
                 </div>
             </div>
         </section>

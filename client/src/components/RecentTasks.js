@@ -15,7 +15,7 @@ function RecentTasks({ tasks, fetchTasks, isLoading, status, category }) {
             </div>
         )
     } else {
-        return <Loader message="Loading Tasks" />
+        return <Loader message="One Moment" />
     }
 }
 

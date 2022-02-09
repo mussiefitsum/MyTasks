@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Tasks from './components/Tasks';
 import Sidebar from './components/Sidebar';
+import baseUrl from './utilities/baseUrl';
 import './App.css';
 
 function App() {
@@ -70,7 +71,7 @@ function App() {
 
   const searchTasks = async (query) => {
     try {
-      const res = await fetch(`http://localhost:3001/api/task/search?task=${ query }`, { credentials: 'include' });
+      const res = await fetch(`${ baseUrl }/api/task/search?task=${ query }`, { credentials: 'include' });
       if (!res.ok) {
         throw new Error('Something went wrong when fetching your tasks')
       } else {
@@ -86,7 +87,7 @@ function App() {
   const fetchTasks = useCallback(async () => {
     startLoading();
     try {
-      const res = await fetch('http://localhost:3001/api/task', { credentials: 'include' });
+      const res = await fetch(`${ baseUrl }/api/task`, { credentials: 'include' });
       if (!res.ok) {
         throw new Error('Something went wrong when fetching your tasks')
       } else {

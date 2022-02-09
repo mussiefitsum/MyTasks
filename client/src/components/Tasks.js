@@ -4,6 +4,7 @@ import RecentTasks from './RecentTasks';
 import Form from './Form';
 import filterTasks from '../utilities/filterTasks';
 import categorizeTasks from '../utilities/categorizeTasks';
+import baseUrl from '../utilities/baseUrl';
 import './Tasks.css';
 
 function Tasks({ tasks, toggleSidebar, isLoading, fetchTasks, status, searchTasks, category }) {
@@ -17,7 +18,7 @@ function Tasks({ tasks, toggleSidebar, isLoading, fetchTasks, status, searchTask
     const addTask = async (task) => {
         const postTask = async () => {
             try {
-                const res = await fetch('http://localhost:3001/api/task', {
+                const res = await fetch(`${ baseUrl }/api/task`, {
                     method: 'POST',
                     credentials: 'include',
                     headers: {

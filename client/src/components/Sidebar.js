@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import filterTasks from '../utilities/filterTasks';
 import categorizeTasks from '../utilities/categorizeTasks';
+import baseUrl from '../utilities/baseUrl';
 import './Sidebar.css'
 
 function Sidebar({ tasks, hideSidebar, sidebar, todoTasks, inProgressTasks, doneTasks, allTasks, status, category, personalTasks, productiveTasks, otherTasks }) {
@@ -57,7 +58,7 @@ function Sidebar({ tasks, hideSidebar, sidebar, todoTasks, inProgressTasks, done
                     </div>
                 </div>
                 <div className="Sidebar-items Sidebar-logout">
-                    <a href="http://localhost:3001/logout">Logout</a>
+                    <a href={`${ baseUrl }/logout`}>Logout</a>
                 </div>
             </div>
         </div>

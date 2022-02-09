@@ -1,6 +1,8 @@
+import baseUrl from './baseUrl'
+
 async function putStatus(taskId, newStatus) {
     try {
-        const res = await fetch('http://localhost:3001/api/status', {
+        const res = await fetch(`${ baseUrl }/api/status`, {
             method: 'PUT',
             credentials: 'include',
             headers: {

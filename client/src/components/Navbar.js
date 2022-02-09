@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import baseUrl from '../utilities/baseUrl'
 import './Navbar.css'
 
 function Navbar({ searchTasks, toggleSidebar }) {
@@ -19,7 +20,7 @@ function Navbar({ searchTasks, toggleSidebar }) {
                 </div>
             </div>
             <div className="Navbar-item Navbar-logout">
-                <a href="http://localhost:3001/logout">Logout</a>
+                <a href={`${ baseUrl }/logout`}>Logout</a>
             </div>
         </div>
     )
