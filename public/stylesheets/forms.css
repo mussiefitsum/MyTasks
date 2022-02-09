@@ -62,6 +62,18 @@ a {
     box-shadow: 0 0px 8px 0 #d2d7e0;
 }
 
+#register {
+    padding: 45px 40px;
+}
+
+#register-form {
+    height: 50vh;
+}
+
+#register-button {
+    margin-top: 10px;
+}
+
 .input-field {
     padding: 10px;
     border-bottom: 1px solid #b9c6d0;

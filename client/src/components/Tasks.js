@@ -41,7 +41,7 @@ function Tasks({ tasks, toggleSidebar, isLoading, fetchTasks, status, searchTask
             <Navbar searchTasks={searchTasks} toggleSidebar={toggleSidebar} />
             <div className="Tasks-container">
                 <button className="Tasks-button" onClick={toggleForm}>+ New Task</button>
-                <img className="Tasks-mobile-button" onClick={toggleForm} src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1644173293/MyTasks/plus_vxavqx.png" alt="Add Task Button" />
+                <img crossorigin="" className="Tasks-mobile-button" onClick={toggleForm} src="https://res.cloudinary.com/dfuxr1p10/image/upload/v1644173293/MyTasks/plus_vxavqx.png" alt="Add Task Button" />
                 <RecentTasks tasks={finalTasks} fetchTasks={fetchTasks} isLoading={isLoading} status={status} category={category} />
             </div>
             {taskForm ? <Form toggleForm={toggleForm} addTask={addTask} /> : null}
