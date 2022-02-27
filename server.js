@@ -20,8 +20,10 @@ const ExpressError = require('./utilities/ExpressError');
 const wrapAsync = require('./utilities/wrapAsync');
 const { taskSchema } = require('./schema');
 
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 const mongoose = require('mongoose');
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/MyTasks';
+const dbUrl = isDevelopment ? 'mongodb://localhost:27017/MyTasks' : process.env.DB_URL;
 
 mongoose.connect(dbUrl);
 const db = mongoose.connection;
@@ -97,10 +99,10 @@ app.use((req, res, next) => {
     next()
 })
 
-const isDevelopment = process.env.NODE_ENV === 'development';
 
 const isLoggedIn = (req, res, next) => {
     if (!req.user) {
+        req.flash('error', 'You must be logged in');
         res.redirect('/login');
         return
     }
