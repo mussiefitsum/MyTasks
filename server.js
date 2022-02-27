@@ -44,6 +44,8 @@ const store = MongoStore.create({
     touchAfter: 24 * 60 * 60
 });
 
+app.set('trust proxy', 1);
+
 store.on('error', function (e) {
     console.log('SESSION STORE ERROR', e);
 })
@@ -54,6 +56,7 @@ const sessionConfig = {
     secret,
     resave: false,
     saveUninitialized: true,
+    proxy: true,
     cookie: {
         httpOnly: true,
         secure: true,
@@ -98,7 +101,7 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 const isLoggedIn = (req, res, next) => {
     if (!req.user) {
-        res.redirect(401, '/login');
+        res.redirect('/login');
         return
     }
     next();
@@ -129,13 +132,14 @@ app.use(express.static(path.resolve(__dirname, './client/build')));
 
 app.get('/login', (req, res) => {
     if (req.user) {
-        return res.redirect(isDevelopment ? 'http://localhost:3000/app' : '/app');
+        return res.redirect('/app');
     }
     res.render('login');
 });
 
 app.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
-    res.redirect(isDevelopment ? 'http://localhost:3000/app' : '/app')
+    console.log('oop')
+    res.redirect('/app')
 });
 
 app.get('/register', (req, res) => {
