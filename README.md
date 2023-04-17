@@ -2,7 +2,7 @@
 ## Description:
 MyTasks is a task management web app that helps users keep track of their duties. This application also gives users the ability to change the status of their tasks between To Do, In Progress, and Done. Users can also filter their tasks by category or status, and use the search bar to look for specific tasks.
 
-Demo: https://myytasks.herokuapp.com/
+Demo: https://my-tasks.onrender.com/
 
 ## Technologies Used:
 - ExpressJS
